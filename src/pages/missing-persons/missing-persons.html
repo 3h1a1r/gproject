@@ -1,0 +1,51 @@
+<!--
+  Generated template for the MissingPersonsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>missingPersons</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    
+    <button ion-button color="dark" (click)="goBack()">Back Home</button>
+
+<ion-list> 
+  <ion-item-sliding *ngFor="let person of missingPersons | async json">
+    <ion-item>
+      <ion-avatar item-start>
+        
+      </ion-avatar>
+      <h2>{{ person.name }}</h2> 
+	  <ion-note> ID {{ person.id }} </ion-note>
+    </ion-item>
+    <ion-item-options side="right">
+      <button ion-button color="primary">
+        <ion-icon name="getLocation"></ion-icon>
+        Get Location
+      </button>
+      <button ion-button color="secondary"
+	  (click)="editPerson(person.key,person.name)">
+        <ion-icon name="edit"></ion-icon>
+        Edit
+      </button>
+    </ion-item-options>
+    <ion-item-options side="left">
+      <button ion-button color="danger"
+              (click)="deleteMissing(person.$key)">
+        <ion-icon name="deleteMissingOne"></ion-icon>
+        Delete
+      </button>
+    </ion-item-options>
+  </ion-item-sliding>
+</ion-list>
+
+
+</ion-content>
